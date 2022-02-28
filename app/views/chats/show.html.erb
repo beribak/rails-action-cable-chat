@@ -1,0 +1,14 @@
+<div class="chat container w-50 bg bg-white mt-5 p-3" data-controller="chat" data-chat-chat-id-value="<%= @chat.id %>">
+    <h1><%= @chat.name %></h1>
+
+    <div class="messages" data-chat-target="messages">
+        <% @chat.messages.each do |message| %>
+            <%= render 'messages/message', message: message %>
+        <% end %>
+    </div>
+
+    <%= simple_form_for [@chat, @message], remote: true do |f| %>
+        <%= f.input :content %>
+    <% end %>
+</div>
+
